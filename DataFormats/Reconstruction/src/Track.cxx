@@ -14,7 +14,7 @@
 using std::array;
 using o2::track::TrackPar;
 using o2::track::TrackParCov;
-using namespace o2::constants::math;
+using namespace o2::common::constants::math;
 
 ClassImp(o2::track::TrackParCov);
 ClassImp(o2::track::TrackPar);

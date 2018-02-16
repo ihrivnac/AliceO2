@@ -14,7 +14,7 @@
 
 #include <TMath.h>
 
-#include "CommonConstants/MathConstants.h"
+#include "common/constants/Math.h"
 #include "ITSMFTReconstruction/Cluster.h"
 #include "ITSReconstruction/CookedTrack.h"
 
@@ -22,7 +22,7 @@ ClassImp(o2::ITS::CookedTrack)
 
   using namespace o2::ITSMFT;
 using namespace o2::ITS;
-using namespace o2::constants::math;
+using namespace o2::common::constants::math;
 using namespace o2::track;
 
 bool CookedTrack::operator<(const CookedTrack& o) const

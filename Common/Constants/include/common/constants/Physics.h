@@ -8,21 +8,28 @@
 // granted to it by virtue of its status as an Intergovernmental Organization
 // or submit itself to any jurisdiction.
 
-/// \file LHCConstants.h
-/// \brief Header to collect LHC related constants
+/// \file PhysicsConstants.h
+/// \brief Header to collect physics constants
 /// \author ruben.shahoyan@cern.ch
 
-#ifndef ALICEO2_LHCCONSTANTS_H_
-#define ALICEO2_LHCCONSTANTS_H_
+#ifndef ALICEO2_PHYSICSCONSTANTS_H_
+#define ALICEO2_PHYSICSCONSTANTS_H_
 
 namespace o2
 {
+namespace common
+{
 namespace constants
 {
-namespace lhc
+namespace physics
 {
-// LHC Beam1 and Beam2 definitions
-enum BeamDirection : int { BeamClockWise, BeamAntiClockWise, NBeamDirections };
+// particles masses
+constexpr float MassPionCharged = 0.139570;
+constexpr float MassPionNeutral = 0.134976;
+constexpr float MassKaonCharged = 0.493677;
+constexpr float MassKaonNeutral = 0.497648;
+constexpr float MassProton = 0.938272;
+}
 }
 }
 }

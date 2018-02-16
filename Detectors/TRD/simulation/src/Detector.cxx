@@ -8,14 +8,14 @@
 // granted to it by virtue of its status as an Intergovernmental Organization
 // or submit itself to any jurisdiction.
 
-#include "TRDSimulation/Detector.h"
+#include "trd/Detector.h"
 #include <TGeoManager.h>
 #include <TVirtualMC.h>
 #include <vector>
 #include "FairVolume.h"
 #include "FairRootManager.h"
-#include "TRDBase/TRDCommonParam.h"
-#include "TRDBase/TRDGeometry.h"
+#include "trd/TRDCommonParam.h"
+#include "trd/TRDGeometry.h"
 #include "SimulationDataFormat/Stack.h"
 #include <stdexcept>
 

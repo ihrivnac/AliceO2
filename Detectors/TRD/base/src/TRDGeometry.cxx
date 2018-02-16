@@ -16,8 +16,8 @@
 #include <FairLogger.h>
 //#include "AliAlignObjParams.h"
 
-#include "TRDBase/TRDGeometry.h"
-#include "TRDBase/TRDPadPlane.h"
+#include "trd/TRDGeometry.h"
+#include "trd/impl1/TRDPadPlane.h"
 
 using namespace o2::trd;
 
@@ -182,7 +182,7 @@ char TRDGeometry::fgSMstatus[kNsector] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 TObjArray* TRDGeometry::fgClusterMatrixArray = nullptr;
 
 // TObjArray* TRDGeometry::fgPadPlaneArray = NULL;
-std::vector<TRDPadPlane*>* TRDGeometry::fgPadPlaneArray;
+std::vector<PadPlane*>* TRDGeometry::fgPadPlaneArray;
 
 //_____________________________________________________________________________
 TRDGeometry::TRDGeometry()
@@ -204,7 +204,7 @@ TRDGeometry::~TRDGeometry()
 void TRDGeometry::CreatePadPlaneArray()
 {
   //
-  // Creates the array of TRDPadPlane objects
+  // Creates the array of PadPlane objects
   //
 
   if (fgPadPlaneArray)
@@ -213,7 +213,7 @@ void TRDGeometry::CreatePadPlaneArray()
   //  static TObjArray padPlaneArray(fgkNlayer * fgkNstack);
   // padPlaneArray.SetOwner(true);
 
-  fgPadPlaneArray = new std::vector<TRDPadPlane*>;
+  fgPadPlaneArray = new std::vector<PadPlane*>;
   fgPadPlaneArray->resize(fgkNlayer * fgkNstack);
   for (int ilayer = 0; ilayer < fgkNlayer; ilayer++) {
     for (int istack = 0; istack < fgkNstack; istack++) {
@@ -225,13 +225,13 @@ void TRDGeometry::CreatePadPlaneArray()
 }
 
 //_____________________________________________________________________________
-TRDPadPlane* TRDGeometry::CreatePadPlane(int ilayer, int istack)
+PadPlane* TRDGeometry::CreatePadPlane(int ilayer, int istack)
 {
   //
-  // Creates an TRDPadPlane object
+  // Creates an PadPlane object
   //
 
-  TRDPadPlane* padPlane = new TRDPadPlane();
+  PadPlane* padPlane = new PadPlane();
 
   padPlane->SetLayer(ilayer);
   padPlane->SetStack(istack);
@@ -2773,7 +2773,7 @@ int TRDGeometry::GetStack(double z, int layer)
     istck--;
     if (istck < 0)
       break;
-    TRDPadPlane* pp = GetPadPlane(layer, istck);
+    PadPlane* pp = GetPadPlane(layer, istck);
     zmax = pp->GetRow0();
     int nrows = pp->GetNrows();
     zmin = zmax - 2 * pp->GetLengthOPad() - (nrows - 2) * pp->GetLengthIPad() - (nrows - 1) * pp->GetRowSpacing();
@@ -2793,7 +2793,7 @@ int TRDGeometry::GetSector(int det)
 }
 
 //_____________________________________________________________________________
-TRDPadPlane* TRDGeometry::GetPadPlane(int layer, int stack)
+PadPlane* TRDGeometry::GetPadPlane(int layer, int stack)
 {
   //
   // Returns the pad plane for a given plane <pl> and stack <st> number
@@ -3025,7 +3025,7 @@ bool TRDGeometry::IsOnBoundary(int det, float y, float z, float eps) const
   if ((stk < 0) || (stk >= fgkNstack))
     return true;
 
-  TRDPadPlane* pp = (*fgPadPlaneArray)[GetDetectorSec(ly, stk)];
+  PadPlane* pp = (*fgPadPlaneArray)[GetDetectorSec(ly, stk)];
   if (!pp)
     return true;
 

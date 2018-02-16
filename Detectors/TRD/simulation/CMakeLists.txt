@@ -3,7 +3,7 @@ SET(MODULE_NAME TRDSimulation)
 O2_SETUP(NAME ${MODULE_NAME})
 
 SET(SRCS src/Detector.cxx)
-SET(HEADERS include/${MODULE_NAME}/Detector.h)
+SET(HEADERS include/trd/Detector.h)
 
 SET(LINKDEF src/TRDSimulationLinkDef.h)
 SET(LIBRARY_NAME ${MODULE_NAME})

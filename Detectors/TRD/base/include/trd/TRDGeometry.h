@@ -20,7 +20,18 @@ namespace o2
 {
 namespace trd
 {
+namespace impl1
+{
 class TRDPadPlane;
+}
+}
+}
+
+namespace o2
+{
+namespace trd
+{
+using PadPlane = impl1::TRDPadPlane;
 
 class TRDGeometry
 {
@@ -54,9 +65,9 @@ class TRDGeometry
   static int GetSector(int det);
 
   static void CreatePadPlaneArray();
-  static TRDPadPlane* CreatePadPlane(int layer, int stack);
-  static TRDPadPlane* GetPadPlane(int layer, int stack);
-  static TRDPadPlane* GetPadPlane(int det) { return GetPadPlane(GetLayer(det), GetStack(det)); }
+  static PadPlane* CreatePadPlane(int layer, int stack);
+  static PadPlane* GetPadPlane(int layer, int stack);
+  static PadPlane* GetPadPlane(int det) { return GetPadPlane(GetLayer(det), GetStack(det)); }
   static int GetRowMax(int layer, int stack, int /*sector*/);
   static int GetColMax(int layer);
   static double GetRow0(int layer, int stack, int /*sector*/);
@@ -197,7 +208,7 @@ class TRDGeometry
   static const double fgkXtrdEnd; //  X-coordinate in tracking system of end of TRD mother volume
 
   static TObjArray* fgClusterMatrixArray; //! Transformation matrices loc. cluster to tracking cs
-  static std::vector<TRDPadPlane*>* fgPadPlaneArray;
+  static std::vector<PadPlane*>* fgPadPlaneArray;
 
   static char fgSMstatus[kNsector]; //  Super module status byte
 

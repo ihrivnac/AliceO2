@@ -1,0 +1,102 @@
+18d17
+< #include "DetectorsCommonDataFormats/DetID.h"
+20a20
+> #include "DetectorsBase/DetID.h"
+26d25
+< #include <memory>
+28a28
+> #include <memory>
+31a32
+> class FairLogger;
+33,36c34,36
+< namespace o2
+< {
+< namespace Base
+< {
+---
+> namespace o2 {
+> 
+> namespace Base {
+40,41c40,41
+< namespace Data
+< {
+---
+> namespace Data {
+> 
+57a58
+> 
+107c108,112
+<   Int_t GetNtrack() const override { return mNumberOfEntriesInParticles; }
+---
+>     Int_t GetNtrack() const override
+>     {
+>       return mNumberOfEntriesInParticles;
+>     }
+> 
+110c115,119
+<   Int_t GetNprimary() const override { return mNumberOfPrimaryParticles; }
+---
+>     Int_t GetNprimary() const override
+>     {
+>       return mNumberOfPrimaryParticles;
+>     }
+> 
+121c130,134
+<   Int_t GetCurrentTrackNumber() const override { return mIndexOfCurrentTrack; }
+---
+>     Int_t GetCurrentTrackNumber() const override
+>     {
+>       return mIndexOfCurrentTrack;
+>     }
+> 
+128a142
+> 
+131a146,148
+>     /// Finish primary
+>     void FinishPrimary() override;
+> 
+148,151c165,184
+<   void StoreSecondaries(Bool_t choice = kTRUE) { mStoreSecondaries = choice; }
+<   void setMinHits(Int_t min) { mMinHits = min; }
+<   void SetEnergyCut(Double_t eMin) { mEnergyCut = eMin; }
+<   void StoreMothers(Bool_t choice = kTRUE) { mStoreMothers = choice; }
+---
+>     void StoreSecondaries(Bool_t choice = kTRUE)
+>     {
+>       mStoreSecondaries = choice;
+>     }
+> 
+>     void setMinHits(Int_t min)
+>     {
+>       mMinHits = min;
+>     }
+> 
+>     void SetEnergyCut(Double_t eMin)
+>     {
+>       mEnergyCut = eMin;
+>     }
+> 
+>     void StoreMothers(Bool_t choice = kTRUE)
+>     {
+>       mStoreMothers = choice;
+>     }
+> 
+161,163d193
+<   // receive notification that primary is finished
+<   void notifyFinishPrimary();
+< 
+164a195,196
+>     FairLogger *mLogger;
+> 
+183c215
+<   std::vector<o2::MCTrack>* mTracks;
+---
+>     std::vector<o2::MCTrack> mTracks;
+216a249
+>   /// copy constructor (used in MT)
+220a254,256
+>     // receive notification that primary is finished
+>     void notifyFinishPrimary();
+> 
+233a270
+> 

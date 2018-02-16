@@ -17,9 +17,9 @@
 //                                                                        //
 ////////////////////////////////////////////////////////////////////////////
 
-#include "TRDBase/TRDSimParam.h"
+#include "trd/TRDSimParam.h"
 #include <TMath.h>
-#include "TRDBase/TRDCommonParam.h"
+#include "trd/TRDCommonParam.h"
 //#include "AliLog.h"
 #include <FairLogger.h>
 

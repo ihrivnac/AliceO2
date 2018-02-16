@@ -25,7 +25,7 @@
 #include "Math/SMatrix.h"
 #include "Math/SVector.h"
 
-#include "CommonConstants/MathConstants.h"
+#include "common/constants/Math.h"
 #include "MathUtils/Cartesian3D.h"
 #include "MathUtils/Utils.h"
 #include "ReconstructionDataFormats/BaseCluster.h"
@@ -100,7 +100,7 @@ class TrackPar
   float getTgl() const { return mP[kTgl]; }
   float getQ2Pt() const { return mP[kQ2Pt]; }
   // derived getters
-  float getCurvature(float b) const { return mP[kQ2Pt] * b * o2::constants::math::B2C; }
+  float getCurvature(float b) const { return mP[kQ2Pt] * b * o2::common::constants::math::B2C; }
   float getSign() const { return mP[kQ2Pt] > 0 ? 1.f : -1.f; }
   float getPhi() const;
   float getPhiPos() const;
@@ -108,7 +108,7 @@ class TrackPar
   float getP() const;
   float getPt() const;
 
-  float getTheta() const { return constants::math::PIHalf - std::atan(mP[3]); }
+  float getTheta() const { return common::constants::math::PIHalf - std::atan(mP[3]); }
   float getEta() const { return -std::log(std::tan(0.5 * getTheta())); }
   Point3D<float> getXYZGlo() const;
   void getXYZGlo(std::array<float, 3>& xyz) const;
@@ -304,7 +304,7 @@ inline float TrackPar::getP() const
 {
   // return the track momentum
   float ptI = fabs(getQ2Pt());
-  return (ptI > o2::constants::math::Almost0) ? sqrtf(1.f + getTgl() * getTgl()) / ptI : o2::constants::math::VeryBig;
+  return (ptI > o2::common::constants::math::Almost0) ? sqrtf(1.f + getTgl() * getTgl()) / ptI : o2::common::constants::math::VeryBig;
 }
 
 //____________________________________________________________
@@ -312,7 +312,7 @@ inline float TrackPar::getPt() const
 {
   // return the track transverse momentum
   float ptI = fabs(getQ2Pt());
-  return (ptI > o2::constants::math::Almost0) ? 1.f / ptI : o2::constants::math::VeryBig;
+  return (ptI > o2::common::constants::math::Almost0) ? 1.f / ptI : o2::common::constants::math::VeryBig;
 }
 
 //============================================================

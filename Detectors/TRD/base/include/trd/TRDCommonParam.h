@@ -11,7 +11,7 @@
 #ifndef O2_TRDCOMMONPARAM_H
 #define O2_TRDCOMMONPARAM_H
 
-#include "TRDBase/TRDSimParam.h"
+#include "trd/TRDSimParam.h"
 
 class TRDPadPlane;
 

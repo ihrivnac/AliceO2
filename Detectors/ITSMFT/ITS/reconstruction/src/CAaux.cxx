@@ -9,10 +9,10 @@
 // or submit itself to any jurisdiction.
 
 #include "ITSReconstruction/CAaux.h"
-#include "CommonConstants/MathConstants.h"
+#include "common/constants/Math.h"
 
 using namespace o2::ITS::CA;
-using o2::constants::math::PI;
+using o2::common::constants::math::PI;
 using std::array;
 
 Cell::Cell(int xx, int yy, int zz, int dd0, int dd1, float curv, array<float, 3> n)

@@ -24,7 +24,7 @@
 
 #include "FairLogger.h"
 
-#include "CommonConstants/MathConstants.h"
+#include "common/constants/Math.h"
 #include "DetectorsBase/Propagator.h"
 #include "Field/MagneticField.h"
 #include "ITSMFTReconstruction/Cluster.h"
@@ -35,7 +35,7 @@
 
 using namespace o2::ITS;
 using namespace o2::ITSMFT;
-using namespace o2::constants::math;
+using namespace o2::common::constants::math;
 using namespace o2::utils;
 using o2::field::MagneticField;
 using Label = o2::MCCompLabel;

@@ -40,7 +40,7 @@
 #include "MathUtils/Utils.h"
 
 using namespace o2::ITS::CA;
-using o2::constants::math::TwoPI;
+using o2::common::constants::math::TwoPI;
 using o2::utils::BringTo02Pi;
 using o2::ITSMFT::Hit;
 

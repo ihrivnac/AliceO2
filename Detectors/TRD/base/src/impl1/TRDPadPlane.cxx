@@ -21,10 +21,11 @@
 //                                                                           //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "TRDBase/TRDPadPlane.h"
+#include "trd/impl1/TRDPadPlane.h"
 #include <TMath.h>
 
 using namespace o2::trd;
+using namespace o2::trd::impl1;
 
 //_____________________________________________________________________________
 TRDPadPlane::TRDPadPlane()

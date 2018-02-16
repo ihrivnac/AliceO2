@@ -8,8 +8,8 @@
 // granted to it by virtue of its status as an Intergovernmental Organization
 // or submit itself to any jurisdiction.
 
-#ifndef O2_TRDPADPLANE_H
-#define O2_TRDPADPLANE_H
+#ifndef O2_IMPL1_TRDPADPLANE_H
+#define O2_IMPL1_TRDPADPLANE_H
 
 #include <Rtypes.h> // for ClassDef
 
@@ -26,6 +26,8 @@
 namespace o2
 {
 namespace trd
+{
+namespace impl1
 {
 class TRDPadPlane
 {
@@ -177,6 +179,7 @@ class TRDPadPlane
 
   ClassDefNV(TRDPadPlane, 1) //  TRD ROC pad plane
 };
+}
 }
 }
 #endif

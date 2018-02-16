@@ -14,7 +14,8 @@
 #pragma link off all classes;
 #pragma link off all functions;
 
-#pragma link C++ class o2::trd::TRDPadPlane + ;
+#pragma link C++ class o2::trd::impl1::TRDPadPlane + ;
+#pragma link C++ class o2::trd::impl2::TRDPadPlane + ;
 #pragma link C++ class o2::trd::TRDGeometry + ;
 #pragma link C++ class o2::trd::TRDCommonParam + ;
 #pragma link C++ class o2::trd::TRDSimParam + ;

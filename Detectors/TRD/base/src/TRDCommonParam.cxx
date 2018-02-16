@@ -22,8 +22,8 @@
 //#include "AliMagF.h"
 
 #include <FairLogger.h>
-#include "TRDBase/TRDCommonParam.h"
-#include "TRDBase/TRDGeometry.h"
+#include "trd/TRDCommonParam.h"
+#include "trd/TRDGeometry.h"
 
 using namespace o2::trd;
 ClassImp(TRDCommonParam);

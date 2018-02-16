@@ -26,7 +26,7 @@
 #include <MFTSimulation/Detector.h>
 #include <EMCALSimulation/Detector.h>
 #include <TOFSimulation/Detector.h>
-#include <TRDSimulation/Detector.h>
+#include <trd/Detector.h>
 #include <FITSimulation/Detector.h>
 #include <PHOSSimulation/Detector.h>
 #include <DetectorsPassive/Cave.h>

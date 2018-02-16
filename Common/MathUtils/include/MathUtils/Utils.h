@@ -17,7 +17,7 @@
 
 #include <array>
 #include <cmath>
-#include "CommonConstants/MathConstants.h"
+#include "common/constants/Math.h"
 
 namespace o2
 {
@@ -29,7 +29,7 @@ inline void BringTo02Pi(float& phi)
 {
   // ensure angle in [0:2pi] for the input in [-pi:pi] or [0:pi]
   if (phi < 0.f) {
-    phi += o2::constants::math::TwoPI;
+    phi += o2::common::constants::math::TwoPI;
   }
 }
 
@@ -37,29 +37,29 @@ inline void BringTo02PiGen(float& phi)
 {
   // ensure angle in [0:2pi] for the any input angle
   while (phi < 0.f) {
-    phi += o2::constants::math::TwoPI;
+    phi += o2::common::constants::math::TwoPI;
   }
-  while (phi > o2::constants::math::TwoPI) {
-    phi -= o2::constants::math::TwoPI;
+  while (phi > o2::common::constants::math::TwoPI) {
+    phi -= o2::common::constants::math::TwoPI;
   }
 }
 
 inline void BringToPMPi(float& phi)
 {
   // ensure angle in [-pi:pi] for the input in [-pi:pi] or [0:pi]
-  if (phi > o2::constants::math::PI) {
-    phi -= o2::constants::math::TwoPI;
+  if (phi > o2::common::constants::math::PI) {
+    phi -= o2::common::constants::math::TwoPI;
   }
 }
 
 inline void BringToPMPiGen(float& phi)
 {
   // ensure angle in [-pi:pi] for any input angle
-  while (phi < -o2::constants::math::PI) {
-    phi += o2::constants::math::TwoPI;
+  while (phi < -o2::common::constants::math::PI) {
+    phi += o2::common::constants::math::TwoPI;
   }
-  while (phi > o2::constants::math::PI) {
-    phi -= o2::constants::math::TwoPI;
+  while (phi > o2::common::constants::math::PI) {
+    phi -= o2::common::constants::math::TwoPI;
   }
 }
 
@@ -82,9 +82,9 @@ inline void RotateZ(std::array<float, 3>& xy, float alpha)
 inline int Angle2Sector(float phi)
 {
   // convert angle to sector ID, phi can be either in 0:2pi or -pi:pi convention
-  int sect = phi * o2::constants::math::Rad2Deg / o2::constants::math::SectorSpanDeg;
+  int sect = phi * o2::common::constants::math::Rad2Deg / o2::common::constants::math::SectorSpanDeg;
   if (phi < 0.f) {
-    sect += o2::constants::math::NSectors - 1;
+    sect += o2::common::constants::math::NSectors - 1;
   }
   return sect;
 }
@@ -92,7 +92,7 @@ inline int Angle2Sector(float phi)
 inline float Sector2Angle(int sect)
 {
   // convert sector to its angle center, in -pi:pi convention
-  float ang = o2::constants::math::SectorSpanRad * (0.5f + sect);
+  float ang = o2::common::constants::math::SectorSpanRad * (0.5f + sect);
   BringToPMPi(ang);
   return ang;
 }

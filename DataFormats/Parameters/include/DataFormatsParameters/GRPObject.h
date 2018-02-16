@@ -18,7 +18,7 @@
 #include <Rtypes.h>
 #include <cstdint>
 #include <ctime>
-#include "CommonConstants/LHCConstants.h"
+#include "common/constants/Lhc.h"
 #include "CommonTypes/Units.h"
 #include "DetectorsCommonDataFormats/DetID.h"
 
@@ -33,7 +33,7 @@ namespace parameters
 
 class GRPObject
 {
-  using beamDirection = o2::constants::lhc::BeamDirection;
+  using beamDirection = o2::common::constants::lhc::BeamDirection;
 
  public:
   using timePoint = std::time_t;

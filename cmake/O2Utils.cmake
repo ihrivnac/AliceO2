@@ -295,7 +295,10 @@ macro(O2_GENERATE_LIBRARY)
   endif()
   # Install all the public headers
   if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/include/${MODULE_NAME})
-    install(DIRECTORY include/${MODULE_NAME} DESTINATION include)
+   install(DIRECTORY include/${MODULE_NAME} DESTINATION include)
+  endif()
+  if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/include/${MODULE_NAMESPACE_NAME})
+   install(DIRECTORY include/${MODULE_NAMESPACE_NAME} DESTINATION include)
   endif()
 
 endmacro(O2_GENERATE_LIBRARY)

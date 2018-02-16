@@ -14,11 +14,11 @@
 
 #include "DataFormatsParameters/GRPObject.h"
 #include <cmath>
-#include "CommonConstants/PhysicsConstants.h"
+#include "common/constants/Physics.h"
 
 using namespace o2::parameters;
-using namespace o2::constants::physics;
-using namespace o2::constants::lhc;
+using namespace o2::common::constants::physics;
+using namespace o2::common::constants::lhc;
 using o2::detectors::DetID;
 
 //_______________________________________________

@@ -14,7 +14,7 @@
 #include <array>
 #include <cmath>
 #include <vector>
-#include "CommonConstants/MathConstants.h"
+#include "common/constants/Math.h"
 #include "ReconstructionDataFormats/Track.h"
 
 namespace o2
@@ -168,7 +168,7 @@ inline float TanLambda(float x1, float y1, float x2, float y2, float z1, float z
 inline bool CompareAngles(float alpha, float beta, float tolerance)
 {
   const float delta = fabs(alpha - beta);
-  return (delta < tolerance || fabs(delta - o2::constants::math::TwoPI) < tolerance);
+  return (delta < tolerance || fabs(delta - o2::common::constants::math::TwoPI) < tolerance);
 }
 } // namespace CA
 } // namespace ITS
