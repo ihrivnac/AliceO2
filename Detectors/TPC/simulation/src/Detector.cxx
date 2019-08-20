@@ -15,6 +15,9 @@
 #include "SimulationDataFormat/Stack.h"
 #include "SimulationDataFormat/TrackReference.h"
 
+// The build system should not allow this include
+#include "ReconstructionDataFormats/Track.h"
+
 #include "FairVolume.h" // for FairVolume
 
 #include "TVirtualMC.h" // for TVirtualMC, gMC
@@ -64,6 +67,10 @@ Detector::Detector(Bool_t active) : o2::base::DetImpl<Detector>("TPC", active), 
   for (int i = 0; i < Sector::MAXSECTOR; ++i) {
     mHitsPerSectorCollection[i] = o2::utils::createSimVector<o2::tpc::HitGroup>(); //new std::vector<o2::tpc::HitGroup>;
   }
+
+  // Create a reco object
+  o2::track::TrackPar trackPar;
+  std::cout << "empty trackPar P " << trackPar.getP() << std::endl;
 }
 
 // forward default constructor
