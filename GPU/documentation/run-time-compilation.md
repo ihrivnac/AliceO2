@@ -1,3 +1,7 @@
+<!-- doxy
+\page refGPUdocumentation-run-time-compilation  GPU Run time compilation
+/doxy -->
+
 Run time compilation is a feature of the GPUReconstruction library, which can recompile the GPU code for HIP and for CUDA at runtime, and apply some optimizations and changes. It is planned to add support for CPU code and OpenCL code in the future.
 
 The changes that can be applied are:

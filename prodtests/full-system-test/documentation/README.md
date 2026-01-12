@@ -1,3 +1,7 @@
+<!-- doxy
+\page refprodtestsfull-system-test-documentation Full system test documentation
+/doxy -->
+
 [full-system-test.md](https://github.com/AliceO2Group/AliceO2/blob/dev/prodtests/full-system-test/documentation/full-system-test.md) :
 - Full system test quick start guide
 
@@ -15,3 +19,13 @@
 
 [raw-tf-conversion.md](https://github.com/AliceO2Group/AliceO2/blob/dev/prodtests/full-system-test/documentation/raw-tf-conversion.md) :
 - This is automated in a script now, but just in case details how readout files are converted to a .tf file for usage in the full system test with replay from DataDistribution.
+
+<!-- doxy
+* \subpage refprodtestsfull-system-test
+* \subpage refprodtestsfull-system-test-setup
+* \subpage refprodtestsfull-system-test-as-stress-test
+* \subpage refprodtestsfull-system-test-dpl-workflow-options
+* \subpage refprodtestsfull-system-test-env-variables
+* \subpage refprodtestsfull-system-test-env-variables
+* \subpage refprodtestsfull-system-test-raw-tf-conversion
+/doxy -->

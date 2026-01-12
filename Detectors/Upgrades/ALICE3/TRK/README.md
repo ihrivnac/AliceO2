@@ -1,5 +1,5 @@
 <!-- doxy
-\page refDetectorsUpgradesALICE3TRK Tracker
+\page refDetectorsUpgradesALICE3TRK Tracker Barrel
 /doxy -->
 
 # ALICE 3 Tracker Barrel

@@ -1,3 +1,7 @@
+<!-- doxy
+\page refprodtestsfull-system-test-as-stress-test Full system test as stress test
+/doxy -->
+
 This is a quick summary how to run the full system test (FST) as stress test on the EPN. (For the full FST documentation, see https://github.com/AliceO2Group/AliceO2/blob/dev/prodtests/full-system-test/documentation/full-system-test-setup.md and https://github.com/AliceO2Group/AliceO2/blob/dev/prodtests/full-system-test/documentation/full-system-test.md)
 
 # Preparing the data set

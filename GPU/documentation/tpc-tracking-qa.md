@@ -1,3 +1,7 @@
+<!-- doxy
+\page refGPUdocumentation-tpc-tracking-qa  TPC Tracking QA
+/doxy -->
+
 This is a quick documentation on the TPC Tracking QA for Resolution, Efficiency, and Cluster Attachment based on MC data.
 
 The TPC QA can produce 3 different output types:

@@ -1,3 +1,7 @@
+<!-- doxy
+\page refprodtestsfull-system-test-setup Full system test setup
+/doxy -->
+
 This is some documentation for the full system test setup.
 
 If you just want to test a small dataset, you can skip the following steps, and jusddt skip to the end, where you will find a download with a prepared data set!

@@ -1,3 +1,7 @@
+<!-- doxy
+\page refGPUdocumentation-build-O2 Building O2 with GPU features
+/doxy -->
+
 This ticket will serve as documentation how to enable which GPU features and collect related issues.
 
 So far, the following features exist:

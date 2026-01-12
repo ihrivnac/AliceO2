@@ -1,5 +1,5 @@
 <!-- doxy
-\page refDetectorsUpgradesALICE3FCT EndCaps
+\page refDetectorsUpgradesALICE3FCT Forward Conversion Tracker
 /doxy -->
 
 # Forward Conversion Tracker

@@ -1,3 +1,7 @@
+<!-- doxy
+\page refprodtestsfull-system-test-raw-tf-conversion Raw TF conversion
+/doxy -->
+
 This procedure will create (S)TF files from raw data prepared as described in the main ticket. The data must be using RDHv6.
 Create configuration for the readout.exe with all input files we want in the TF. This will create rdo_TF.cfg file.
 

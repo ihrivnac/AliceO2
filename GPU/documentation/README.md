@@ -1,3 +1,7 @@
+<!-- doxy
+\page refGPUdocumentation GPU documentation
+/doxy -->
+
 [build-O2.md](https://github.com/AliceO2Group/AliceO2/blob/dev/GPU/documentation/build-O2.md) :
 - Instructions how to build O2 with GPU support.
 - Description of the CMake variables used.
@@ -14,3 +18,11 @@
 
 [tpc-tracking-qa.md](https://github.com/AliceO2Group/AliceO2/blob/dev/GPU/documentation/tpc-tracking-qa.md) :
 - Instructions how to run the QA for TPC tracking (efficiency, resolution, etc.).
+
+<!-- doxy
+* \subpage refGPUdocumentation-build-O2
+* \subpage refGPUdocumentation-build-standalone
+* \subpage refGPUdocumentation-deterministic-mode
+* \subpage refGPUdocumentation-run-time-compilation
+* \subpage refGPUdocumentation-tpc-tracking-qa
+/doxy -->

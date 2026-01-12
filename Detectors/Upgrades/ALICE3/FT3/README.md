@@ -1,5 +1,5 @@
 <!-- doxy
-\page refDetectorsUpgradesALICE3FT3 EndCaps
+\page refDetectorsUpgradesALICE3FT3 Tracker Endcaps
 /doxy -->
 
 # ALICE 3 Tracker Endcaps

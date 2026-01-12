@@ -1,3 +1,7 @@
+<!-- doxy
+\page refprodtestsfull-system-test-dpl-workflow-options Configuration options
+/doxy -->
+
 # Configuration options
 You can use the following options to change the workflow behavior:
 - `DDMODE` (default `processing`) : Must be `processing` (synchronous processing) or `processing-disk` (synchronous processing + storing of raw time frames to disk, note that this is the raw time frame not the CTF!). The `DDMODE` `discard` and `disk` are not compatible with the synchronous processing workflow, you must use the `no-processing.desc` workflow instead!.

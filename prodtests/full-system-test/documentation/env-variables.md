@@ -1,3 +1,7 @@
+<!-- doxy
+\page refprodtestsfull-system-test-env-variables Env variables
+/doxy -->
+
 The [setenv-sh](https://github.com/davidrohr/O2DPG/blob/master/DATA/common/setenv.sh) script sets the following environment options
 * `NTIMEFRAMES`: Number of time frames to process.
 * `TFDELAY`: Delay in seconds between publishing time frames (1 / rate).

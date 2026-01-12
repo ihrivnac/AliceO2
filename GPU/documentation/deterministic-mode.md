@@ -1,3 +1,7 @@
+<!-- doxy
+\page refGPUdocumentation-deterministic-mode  TPC deterministic mode
+/doxy -->
+
 The TPC tracking code is not fully deterministic, i.e. running multiple times on the same data set might yield a slightly different number of tracks on the O(per mille) level.
 - This comes from concurrency, i.e. when tracks are processed in parallel, the output order might change, which might have small effects on the consecutive steps.
 - Also compile options and optimizations play a row, e.g. using ffast-math or fused-multiply-add might slightly change the rounding of floating point, and in rare cases lead to the acceptance or rejection of a track, and thus a different number of tracks.

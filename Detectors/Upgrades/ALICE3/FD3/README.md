@@ -1,5 +1,5 @@
 <!-- doxy
-\page refDetectorsUpgradesALICE3TRK Tracker
+\page refDetectorsUpgradesALICE3FD3 Forward Detector
 /doxy -->
 
 # ALICE 3 FORWARD DETECTOR

@@ -1,3 +1,7 @@
+<!-- doxy
+\page refGPUdocumentation-build-standalone Building O2 GPU TPC Standalone benchmark
+/doxy -->
+
 This ticket describes how to build the O2 GPU TPC Standalone benchmark (in its 2 build types), and how to run it.
 
 The purpose of the standalone benchmark is to make the O2 GPU TPC reconstruction code available standalone. It provides

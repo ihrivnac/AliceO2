@@ -14,6 +14,8 @@
 * \subpage refrunSimExamplesAliRoot_Hijing
 * \subpage refrunSimExamplesAliRoot_AMPT
 * \subpage refrunSimExamplesHepMC
+* \subpage refrunSimExamplesHepMC_HERWIG7
+* \subpage refrunSimExamplesHepMC_JETSCAPE
 * \subpage refrunSimExamplesHepMC_STARlight
 * \subpage refrunSimExamplesHepMC_EPOS4
 * \subpage refrunSimExamplesHybrid
