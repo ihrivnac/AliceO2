@@ -14,7 +14,8 @@ o2_add_library(HMPIDBase
                PUBLIC_LINK_LIBRARIES O2::CommonDataFormat
                                      O2::SimulationDataFormat
                                      O2::DetectorsBase
-                                     ROOT::Physics)
+                                     ROOT::Physics
+                                     VecGeom::vecgeom )
 
 o2_target_root_dictionary(HMPIDBase
                           HEADERS include/HMPIDBase/Param.h

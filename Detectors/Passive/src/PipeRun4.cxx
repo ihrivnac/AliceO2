@@ -12,6 +12,7 @@
 #include "DetectorsPassive/PipeRun4.h"
 #include <DetectorsBase/Detector.h>
 #include <DetectorsBase/MaterialManager.h>
+#include <TGeoBBox.h>
 #include <TGeoCompositeShape.h>
 #include <TGeoCone.h>
 #include <TGeoPcon.h>

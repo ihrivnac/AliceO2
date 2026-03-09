@@ -20,7 +20,7 @@ o2_add_library(
           src/Station2Geometry.h
           src/Station345Geometry.cxx
           src/Station345Geometry.h
-  PUBLIC_LINK_LIBRARIES ROOT::Geom RapidJSON::RapidJSON
+  PUBLIC_LINK_LIBRARIES VecGeom::vecgeom ROOT::Geom RapidJSON::RapidJSON
                         O2::MCHGeometryTransformer O2::DetectorsBase)
 
 o2_target_root_dictionary(MCHGeometryCreator

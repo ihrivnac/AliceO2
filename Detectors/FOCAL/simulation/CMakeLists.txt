@@ -11,7 +11,7 @@
 
 o2_add_library(FOCALSimulation
     SOURCES src/Detector.cxx
-    PUBLIC_LINK_LIBRARIES ROOT::TreePlayer O2::FOCALBase O2::DetectorsBase O2::SimConfig O2::SimulationDataFormat O2::Headers O2::DataFormatsFOCAL
+    PUBLIC_LINK_LIBRARIES VecGeom::vecgeom ROOT::TreePlayer O2::FOCALBase O2::DetectorsBase O2::SimConfig O2::SimulationDataFormat O2::Headers O2::DataFormatsFOCAL
     AliceO2::InfoLogger
     Microsoft.GSL::GSL)
 

@@ -533,7 +533,7 @@ void V3Services::ibEndWheelSideA(const Int_t iLay, TGeoVolume* endWheel, const T
   TGeoTube* midRingSh = new TGeoTube(Form("midRingSh%d", iLay), rmin, rmax, zlen);
 
   // A Rib (a TGeoXtru)
-  TGeoXtru* coneARibSh = ibEndWheelARibShape(iLay);
+  TGeoShape* coneARibSh = ibEndWheelARibShape(iLay);
 
   // Now the Step as a Composite Shape (subtraction of a Pcon from a BBox)
   // (cutting volume should be slightly larger than desired region)
@@ -819,7 +819,8 @@ void V3Services::ibEndWheelSideC(const Int_t iLay, TGeoVolume* endWheel, const T
   }
 }
 
-TGeoXtru* V3Services::ibEndWheelARibShape(const Int_t iLay)
+// TGeoXtru* V3Services::ibEndWheelARibShape(const Int_t iLay)
+TGeoShape* V3Services::ibEndWheelARibShape(const Int_t iLay)
 {
   //
   // Creates the shape of a Rib on Side A cone

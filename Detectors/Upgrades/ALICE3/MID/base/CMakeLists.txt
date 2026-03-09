@@ -12,7 +12,7 @@
 o2_add_library(MI3Base
                SOURCES src/GeometryTGeo.cxx
                        src/MI3BaseParam.cxx
-               PUBLIC_LINK_LIBRARIES O2::DetectorsBase)
+               PUBLIC_LINK_LIBRARIES VecGeom::vecgeom O2::DetectorsBase)
 
 o2_target_root_dictionary(MI3Base
                HEADERS include/MI3Base/GeometryTGeo.h

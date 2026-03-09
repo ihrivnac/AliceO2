@@ -25,6 +25,7 @@
 #include <TGeoVolume.h>
 #include <TGeoManager.h>
 #include <TGeoShape.h>
+#include <TGeoBBox.h>
 #include <TGeoCompositeShape.h>
 
 namespace o2

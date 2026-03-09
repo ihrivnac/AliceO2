@@ -23,7 +23,7 @@ o2_add_library(DetectorsPassive
                        src/Hall.cxx
                        src/HallSimParam.cxx
                        src/PassiveBase.cxx
-               PUBLIC_LINK_LIBRARIES O2::Field O2::DetectorsBase O2::SimConfig)
+               PUBLIC_LINK_LIBRARIES VecGeom::vecgeom O2::Field O2::DetectorsBase O2::SimConfig)
 
 o2_target_root_dictionary(DetectorsPassive
                           HEADERS include/DetectorsPassive/Absorber.h

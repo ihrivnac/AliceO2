@@ -41,6 +41,8 @@
 // geo stuff
 #include "TGeoManager.h"
 #include "TGeoVolume.h"
+#include "TGeoBBox.h"
+#include "TGeoBaseBox.h"
 #include "TGeoPcon.h"
 #include "TGeoTube.h"
 #include "TGeoCone.h"
@@ -2354,8 +2356,8 @@ void Detector::ConstructTPCGeometry()
   Double_t shift1[3] = {0.0, -0.175, 0.0};
 
   new TGeoBBox("tpcihs1", 4.7, 0.66, 2.35);
-  new TGeoBBox("tpcihs2", 4.7, 0.485, 1.0, shift1);
-  new TGeoBBox("tpcihs3", 1.5, 0.485, 2.35, shift1);
+  new TGeoBaseBox("tpcihs2", 4.7, 0.485, 1.0, shift1);
+  new TGeoBaseBox("tpcihs3", 1.5, 0.485, 2.35, shift1);
   new TGeoTube("tpcihs4", 0.0, 2.38, 0.1);
   //
   Double_t pointstrap[16];
@@ -2421,15 +2423,15 @@ void Detector::ConstructTPCGeometry()
   shift1[0] = -3.65;
   shift1[1] = 0.53;
   shift1[2] = 0.;
-  new TGeoBBox("tpcirh2", 1.05, 0.8, 0.5, shift1);
+  new TGeoBaseBox("tpcirh2", 1.05, 0.8, 0.5, shift1);
   shift1[0] = 3.65;
   shift1[1] = 0.53;
   shift1[2] = 0.;
-  new TGeoBBox("tpcirh3", 1.05, 0.8, 0.5, shift1);
+  new TGeoBaseBox("tpcirh3", 1.05, 0.8, 0.5, shift1);
   shift1[0] = 0.0;
   shift1[1] = 1.08;
   shift1[2] = 0.;
-  new TGeoBBox("tpcirh4", 1.9, 0.25, 0.5, shift1);
+  new TGeoBaseBox("tpcirh4", 1.9, 0.25, 0.5, shift1);
   new TGeoTube("tpcirh5", 0, 1.9, 5);
   //
   auto* trans4 = new TGeoTranslation("trans4", 0, 0.83, 0.0);
@@ -2476,7 +2478,7 @@ void Detector::ConstructTPCGeometry()
   shift1[1] = -2.09;
   shift1[2] = 1.075;
   //
-  new TGeoBBox("pcuti", 1.5, 0.11, 1.075, shift1);
+  new TGeoBaseBox("pcuti", 1.5, 0.11, 1.075, shift1);
   //
   auto* inplleft = new TGeoCompositeShape("inplleft", "inplug-pcuti");
   auto* tpcinlplug = new TGeoVolume("TPC_INPLL", inplleft, m6);
@@ -2525,7 +2527,7 @@ void Detector::ConstructTPCGeometry()
   shift1[2] = 0.0;
   //
   new TGeoBBox("tpcomh3", 1.65, 1.15, 3.4);
-  auto* tpcomh4 = new TGeoBBox("tpcomh4", 0.75, 0.7, 3.4, shift1);
+  auto* tpcomh4 = new TGeoBaseBox("tpcomh4", 0.75, 0.7, 3.4, shift1);
   //
   // halfspace 1
   //
@@ -2612,14 +2614,14 @@ void Detector::ConstructTPCGeometry()
   shift1[1] = 0.175;
   shift1[2] = 0.0;
   //
-  new TGeoBBox("tpcohs2", 1.5, 0.5, 2.35, shift1);
-  new TGeoBBox("tpcohs3", 3.8, 0.5, 0.85, shift1);
+  new TGeoBaseBox("tpcohs2", 1.5, 0.5, 2.35, shift1);
+  new TGeoBaseBox("tpcohs3", 3.8, 0.5, 0.85, shift1);
   //
   shift1[0] = 0.0;
   shift1[1] = -1.175;
   shift1[2] = 0.0;
   //
-  auto* tpcohs4 = new TGeoBBox("tpsohs4", 3.1, 0.5, 0.7, shift1);
+  auto* tpcohs4 = new TGeoBaseBox("tpsohs4", 3.1, 0.5, 0.7, shift1);
   //
   auto* tpcohs4v = new TGeoVolume("TPC_OHS4", tpcohs4, m6);
   //
@@ -2651,31 +2653,31 @@ void Detector::ConstructTPCGeometry()
   shift1[1] = -0.5;
   shift1[2] = 0.0;
   //
-  new TGeoBBox("tpcorh2", 0.5, 2.75, 1.1, shift1);
+  new TGeoBaseBox("tpcorh2", 0.5, 2.75, 1.1, shift1);
   //
   shift1[0] = 3.1;
   shift1[1] = -0.5;
   shift1[2] = 0.0;
   //
-  new TGeoBBox("tpcorh3", 0.5, 2.75, 1.1, shift1);
+  new TGeoBaseBox("tpcorh3", 0.5, 2.75, 1.1, shift1);
   //
   shift1[0] = 0.0;
   shift1[1] = -0.5;
   shift1[2] = -0.95;
   //
-  new TGeoBBox("tpcorh4", 3.9, 2.75, 0.5, shift1);
+  new TGeoBaseBox("tpcorh4", 3.9, 2.75, 0.5, shift1);
   //
   shift1[0] = 0.0;
   shift1[1] = -0.5;
   shift1[2] = 0.0;
   //
-  new TGeoBBox("tpcorh5", 1.95, 0.5, 1.1, shift1);
+  new TGeoBaseBox("tpcorh5", 1.95, 0.5, 1.1, shift1);
   //
   shift1[0] = 0.0;
   shift1[1] = -0.5;
   shift1[2] = 0.55;
   //
-  new TGeoBBox("tpcorh6", 2.4, 0.5, 0.6, shift1);
+  new TGeoBaseBox("tpcorh6", 2.4, 0.5, 0.6, shift1);
   //
   new TGeoTube("tpcorh7", 0, 1.95, 0.85);
   new TGeoTube("tpcorh8", 0, 2.4, 0.6);
@@ -2717,7 +2719,7 @@ void Detector::ConstructTPCGeometry()
   shift1[1] = 2.09;
   shift1[2] = 1.01;
 
-  new TGeoBBox("cutout", 2.5, 0.11, 1.01, shift1);
+  new TGeoBaseBox("cutout", 2.5, 0.11, 1.01, shift1);
   //
 
   auto* outplleft = new TGeoCompositeShape("outplleft", "outplug-cutout");
@@ -2772,7 +2774,7 @@ void Detector::ConstructTPCGeometry()
   shift1[2] = 0.0;
   //
   new TGeoBBox("tpcmmhc1", 1.65, 1.85, 8.9);
-  new TGeoBBox("tpcmmhc2", 0.9, 0.7, 8.9, shift1);
+  new TGeoBaseBox("tpcmmhc2", 0.9, 0.7, 8.9, shift1);
   //
   // half spaces  - cuts
   //

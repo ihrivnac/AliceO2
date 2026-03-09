@@ -12,6 +12,7 @@
 #include <DetectorsBase/Detector.h>
 #include <DetectorsPassive/Shil.h>
 #include <DetectorsBase/MaterialManager.h>
+#include <TGeoBBox.h>
 #include <TGeoCompositeShape.h>
 #include <TGeoCone.h>
 #include <TGeoManager.h>

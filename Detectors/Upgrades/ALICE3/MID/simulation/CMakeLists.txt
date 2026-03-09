@@ -13,7 +13,8 @@ o2_add_library(MI3Simulation
                SOURCES src/Detector.cxx
                SOURCES src/MIDLayer.cxx
                PUBLIC_LINK_LIBRARIES O2::MI3Base
-                                     O2::ITSMFTSimulation)
+                                     O2::ITSMFTSimulation
+                                     VecGeom::vecgeom )
 
 o2_target_root_dictionary(MI3Simulation
                           HEADERS include/MI3Simulation/Detector.h)

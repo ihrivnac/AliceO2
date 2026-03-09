@@ -14,7 +14,8 @@ o2_add_library(FCTSimulation
                        src/Detector.cxx
                PUBLIC_LINK_LIBRARIES O2::FCTBase
                                      O2::ITSMFTSimulation
-                                     ROOT::Physics)
+                                     ROOT::Physics
+                                     VecGeom::vecgeom )
 
 o2_target_root_dictionary(FCTSimulation
                           HEADERS include/FCTSimulation/Detector.h

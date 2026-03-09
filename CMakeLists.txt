@@ -76,6 +76,9 @@ if(DEFINED ENV{ENABLE_DEBUG_STREAMER})
   MESSAGE(STATUS "Enable debug streamer")
 endif()
 
+# TODO: Make this better in future
+add_definitions(-DROOT_USE_VECGEOM_SOLIDS)
+
 # include macros and functions that are used in the following subdirectories'
 # CMakeLists.txt
 include(O2AddExecutable)

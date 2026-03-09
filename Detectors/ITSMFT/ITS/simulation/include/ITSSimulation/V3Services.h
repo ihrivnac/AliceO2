@@ -21,7 +21,7 @@
 #include "Rtypes.h"                    // for Double_t, Int_t, Bool_t, etc
 #include "ITSSimulation/V11Geometry.h" // for V11Geometry
 
-class TGeoXtru;
+// class TGeoXtru;
 
 class TGeoCombiTrans;
 
@@ -131,7 +131,7 @@ class V3Services : public V11Geometry
 
   /// Creates the shape of a Rib on Side A
   /// \param iLay  the layer number
-  TGeoXtru* ibEndWheelARibShape(const Int_t iLay);
+  TGeoShape* ibEndWheelARibShape(const Int_t iLay);
 
   /// Creates the CYSS cylinder of the Inner Barrel
   /// \param mgr  The GeoManager (used only to get the proper material)

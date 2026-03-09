@@ -22,6 +22,7 @@
 #include <TGeoArb8.h>     // for TGeoArb8
 #include <TGeoElement.h>  // for TGeoElement
 #include <TGeoMaterial.h> // for TGeoMixture, TGeoMaterial, etc
+#include <TGeoBBox.h>     // for TGeoBBox
 #include <TGeoPcon.h>     // for TGeoPcon
 #include <TGeoCone.h>     // for TGeoConSeg
 #include <TLine.h>        // for TLine

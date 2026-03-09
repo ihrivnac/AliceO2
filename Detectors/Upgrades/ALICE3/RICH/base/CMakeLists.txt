@@ -12,7 +12,7 @@
 o2_add_library(RICHBase
                SOURCES src/GeometryTGeo.cxx
                        src/RICHBaseParam.cxx
-               PUBLIC_LINK_LIBRARIES O2::DetectorsBase)
+               PUBLIC_LINK_LIBRARIES VecGeom::vecgeom O2::DetectorsBase)
 
 o2_target_root_dictionary(RICHBase
                HEADERS include/RICHBase/GeometryTGeo.h

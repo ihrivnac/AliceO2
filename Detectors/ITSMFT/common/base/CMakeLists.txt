@@ -12,7 +12,8 @@
 o2_add_library(ITSMFTBase
                SOURCES src/SegmentationAlpide.cxx
                        src/GeometryTGeo.cxx src/DPLAlpideParam.cxx
-               PUBLIC_LINK_LIBRARIES O2::MathUtils
+               PUBLIC_LINK_LIBRARIES VecGeom::vecgeom
+                                     O2::MathUtils
                                      O2::DetectorsCommonDataFormats
                                      O2::SimConfig)
 

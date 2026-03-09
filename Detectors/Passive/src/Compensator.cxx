@@ -18,6 +18,7 @@
 #include <TGeoMaterial.h>
 #include <TGeoMatrix.h>
 #include <TGeoMedium.h>
+#include <TGeoBBox.h>
 #include <TGeoTube.h>
 #include <TGeoVolume.h>
 #include <TGeoXtru.h>

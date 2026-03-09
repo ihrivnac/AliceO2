@@ -19,12 +19,31 @@
 #include <TObject.h> // for TObject
 #include "Rtypes.h"  // for Double_t, Int_t, Bool_t, V11Geometry::Class, etc
 
-class TGeoArb8;    // lines 11-11
-class TGeoBBox;    // lines 16-16
-class TGeoConeSeg; // lines 15-15
-class TGeoPcon;    // lines 12-12
-class TGeoTube;    // lines 13-13
-class TGeoTubeSeg; // lines 14-14
+#if ! defined(ROOT_USE_VECGEOM_SOLIDS)
+  class TGeoBBox;    // lines 16-16
+  class TGeoCone;    // lines 15-15
+  class TGeoConeSeg; // lines 15-15
+  class TGeoArb8;    // lines 12-12
+  class TGeoPcon;    // lines 12-12
+  class TGeoTube;    // lines 13-13
+  class TGeoTubeSeg; // lines 14-14
+#else
+  class TGeoVGBBox;    // lines 16-16
+  class TGeoVGCone;    // lines 15-15
+  class TGeoVGConeSeg; // lines 15-15
+  class TGeoVGArb8;    // lines 12-12
+  class TGeoVGPcon;    // lines 12-12
+  class TGeoVGTube;    // lines 13-13
+  class TGeoVGTubeSeg; // lines 14-14
+
+  using TGeoBBox = TGeoVGBBox;
+  using TGeoCone = TGeoVGCone;
+  using TGeoConeSeg = TGeoVGConeSeg;
+  using TGeoPcon = TGeoVGPcon;
+  using TGeoTube = TGeoVGTube;
+  using TGeoTubeSeg = TGeoVGTubeSeg;
+  using TGeoArb8 = TGeoVGArb8;
+#endif
 
 namespace o2
 {

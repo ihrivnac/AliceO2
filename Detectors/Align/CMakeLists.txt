@@ -56,7 +56,8 @@ o2_add_library(Align
                                      ROOT::Matrix
                                      ROOT::Hist
                                      ROOT::RIO
-                                     ROOT::Tree)
+                                     ROOT::Tree
+                                     VecGeom::vecgeom)
 
 o2_target_root_dictionary(
   Align

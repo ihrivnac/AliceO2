@@ -15,7 +15,11 @@
 #include "DetectorsPassive/PassiveBase.h"
 #include "Rtypes.h"     // for Pipe::Class, ClassDef, Pipe::Streamer
 
-class TGeoPcon;
+#if ! defined(ROOT_USE_VECGEOM_SOLIDS)
+  class TGeoPcon;
+#else
+  class TGeoVGPcon;
+# endif
 
 namespace o2
 {

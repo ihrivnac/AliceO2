@@ -18,7 +18,8 @@ o2_add_library(MCHSimulation
                        src/Stepper.cxx
                        src/Stepper.h
                        src/Response.cxx
-                PUBLIC_LINK_LIBRARIES O2::DataFormatsMCH
+                PUBLIC_LINK_LIBRARIES VecGeom::vecgeom
+                                      O2::DataFormatsMCH
                                       O2::DetectorsBase
                                       O2::DetectorsPassive
                                       O2::DetectorsRaw

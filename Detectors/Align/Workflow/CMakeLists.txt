@@ -30,7 +30,8 @@ o2_add_library(AlignmentWorkflow
                                      ROOT::Matrix
                                      ROOT::Hist
                                      ROOT::RIO
-                                     ROOT::Tree)
+                                     ROOT::Tree
+                                     VecGeom::vecgeom)
 
 o2_add_executable(alignment-workflow
                   COMPONENT_NAME barrel

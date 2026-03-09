@@ -21,7 +21,8 @@
 #include "Rtypes.h"                    // for Double_t, Int_t, Bool_t, etc
 #include "ITSSimulation/V11Geometry.h" // for V11Geometry
 
-class TGeoXtru;
+// class TGeoXtru;
+class TGeoShape;
 
 class TGeoCombiTrans;
 
@@ -301,7 +302,7 @@ class V3Layer : public V11Geometry
   /// \param L The stave length
   /// \param H The stave height
   /// \param top True to create the top corner, False to create the side one
-  TGeoXtru* createStaveSide(const char* name, Double_t dz, Double_t alpha, Double_t beta, Double_t L, Double_t H,
+  TGeoShape* createStaveSide(const char* name, Double_t dz, Double_t alpha, Double_t beta, Double_t L, Double_t H,
                             Bool_t top);
 
   /// Help method to create a TGeoCombiTrans matrix from a similar method with same name and

@@ -14,6 +14,7 @@
 #include <DetectorsPassive/Hall.h>
 #include <FairRunSim.h>
 #include <TGeoArb8.h> // for TGeoTrap
+#include <TGeoBBox.h>
 #include <TGeoCompositeShape.h>
 #include <TGeoManager.h>
 #include <TGeoMatrix.h>

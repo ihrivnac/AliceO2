@@ -22,7 +22,8 @@ o2_add_library(TRDSimulation
                        src/TrapSimulator.cxx
                        src/Trap2CRU.cxx
                        src/PileupTool.cxx
-                       PUBLIC_LINK_LIBRARIES O2::DetectorsBase
+                       PUBLIC_LINK_LIBRARIES VecGeom::vecgeom
+                                             O2::DetectorsBase
                                              O2::SimulationDataFormat
                                              O2::TRDBase
                                              O2::DataFormatsTRD

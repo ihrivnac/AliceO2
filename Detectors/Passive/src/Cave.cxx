@@ -30,6 +30,7 @@
 #include <fairlogger/Logger.h>
 #include "TGeoManager.h"
 #include "TGeoVolume.h"
+#include "TGeoPcon.h"
 #include "TGeoPgon.h"
 #include "TGeoTube.h"
 #include "TGeoCompositeShape.h"

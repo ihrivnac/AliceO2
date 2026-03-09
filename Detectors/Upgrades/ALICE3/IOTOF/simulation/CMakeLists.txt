@@ -14,7 +14,8 @@ o2_add_library(IOTOFSimulation
                        src/Detector.cxx
                       #  src/IOTOFServices.cxx
                PUBLIC_LINK_LIBRARIES O2::IOTOFBase
-                                     O2::ITSMFTSimulation)
+                                     O2::ITSMFTSimulation
+                                     VecGeom::vecgeom )
 
 o2_target_root_dictionary(IOTOFSimulation
                           HEADERS include/IOTOFSimulation/Detector.h

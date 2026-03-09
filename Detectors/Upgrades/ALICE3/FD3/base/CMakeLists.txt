@@ -12,7 +12,7 @@
 o2_add_library(FD3Base
         SOURCES src/GeometryTGeo.cxx
                 src/FD3BaseParam.cxx
-                PUBLIC_LINK_LIBRARIES  O2::DetectorsBase)
+                PUBLIC_LINK_LIBRARIES  VecGeom::vecgeom O2::DetectorsBase)
 
 o2_target_root_dictionary(FD3Base
         HEADERS include/FD3Base/GeometryTGeo.h

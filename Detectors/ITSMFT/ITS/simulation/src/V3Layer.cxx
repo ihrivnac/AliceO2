@@ -2989,7 +2989,7 @@ void V3Layer::createOBSpaceFrameObjects(const TGeoManager* mgr)
   // We create a fake side V to have its dimensions, needed for
   // the creation of the end unit container
   TGeoXtru* vside =
-    createStaveSide("fakeCornerSide", unitlen / 2., alphaRad, beta, staveLb, staveHb, kFALSE);
+     (TGeoXtru*)createStaveSide("fakeCornerSide", unitlen / 2., alphaRad, beta, staveLb, staveHb, kFALSE);
 
   ypos = -triangleHeight / 2 + vside->GetY(3);
   TGeoTranslation* endUnitConnTrans = new TGeoTranslation("endunitconntrans", 0, ypos, unitlen / 2);
@@ -3021,7 +3021,7 @@ void V3Layer::createOBSpaceFrameObjects(const TGeoManager* mgr)
 
   //--- The top V of the Carbon Fiber Stave (segment)
   TGeoXtru* cfStavTop =
-    createStaveSide("CFstavTopCornerVolshape", unitlen / 2., alphaRad, beta, staveLa, staveHa, kTRUE);
+    (TGeoXtru*)createStaveSide("CFstavTopCornerVolshape", unitlen / 2., alphaRad, beta, staveLa, staveHa, kTRUE);
 
   TGeoVolume* cfStavTopVol = new TGeoVolume("CFstavTopCornerVol", cfStavTop, medCarbon);
   cfStavTopVol->SetLineColor(35);
@@ -3036,7 +3036,7 @@ void V3Layer::createOBSpaceFrameObjects(const TGeoManager* mgr)
 
   zlen = topVFactorEU * unitlen;
   TGeoXtru* cfStavTopEU =
-    createStaveSide("CFstavTopCornerEUVolshape", zlen / 2., alphaRad, beta, staveLa, staveHa, kTRUE);
+    (TGeoXtru*)createStaveSide("CFstavTopCornerEUVolshape", zlen / 2., alphaRad, beta, staveLa, staveHa, kTRUE);
 
   TGeoVolume* cfStavTopVolEU = new TGeoVolume("CFstavTopCornerEUVol", cfStavTopEU, medCarbon);
   cfStavTopVol->SetLineColor(35);
@@ -3049,7 +3049,7 @@ void V3Layer::createOBSpaceFrameObjects(const TGeoManager* mgr)
 
   //--- The two side V's
   TGeoXtru* cfStavSide =
-    createStaveSide("CFstavSideCornerVolshape", unitlen / 2., alphaRad, beta, staveLb, staveHb, kFALSE);
+    (TGeoXtru*)createStaveSide("CFstavSideCornerVolshape", unitlen / 2., alphaRad, beta, staveLb, staveHb, kFALSE);
 
   TGeoVolume* cfStavSideVol = new TGeoVolume("CFstavSideCornerVol", cfStavSide, medCarbon);
   cfStavSideVol->SetLineColor(35);
@@ -3705,7 +3705,7 @@ void V3Layer::setStaveWidth(const Double_t w)
   }
 }
 
-TGeoXtru* V3Layer::createStaveSide(const char* name, Double_t dz, Double_t alpha, Double_t beta, Double_t L, Double_t H,
+TGeoShape* V3Layer::createStaveSide(const char* name, Double_t dz, Double_t alpha, Double_t beta, Double_t L, Double_t H,
                                    Bool_t top)
 {
   //

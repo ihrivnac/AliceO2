@@ -20,7 +20,7 @@ o2_add_library(
 o2_add_executable(
   convert-geometry
   SOURCES src/convert-geometry.cxx
-  PUBLIC_LINK_LIBRARIES ROOT::Geom Microsoft.GSL::GSL Boost::program_options
+  PUBLIC_LINK_LIBRARIES VecGeom::vecgeom ROOT::Geom Microsoft.GSL::GSL Boost::program_options
                         O2::MCHGeometryTransformer
   COMPONENT_NAME mch)
 

@@ -22,6 +22,7 @@
 #include <TGeoMedium.h>
 #include <TGeoShape.h>
 #include <TGeoArb8.h>
+#include <TGeoBBox.h>
 #include <TGeoXtru.h>
 #include <TGeoTube.h>
 #include <TGeoVolume.h>

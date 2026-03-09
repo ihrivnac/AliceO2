@@ -18,7 +18,8 @@ o2_add_library(FDDSimulation
                               O2::DataFormatsFDD
                               O2::DetectorsRaw
                               O2::DetectorsBase
-                              ROOT::Physics)
+                              ROOT::Physics
+                              VecGeom::vecgeom )
 
 o2_target_root_dictionary(FDDSimulation
         HEADERS include/FDDSimulation/Detector.h

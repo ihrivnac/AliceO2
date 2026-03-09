@@ -21,8 +21,8 @@
 #include "TGeoBBox.h"
 #include "TGeoCompositeShape.h"
 #include "TGeoTube.h"
-#include "TGeoCone.h"
-#include "TGeoArb8.h"
+// #include "TGeoCone.h"
+// #include "TGeoArb8.h"
 #include "TGeoBoolNode.h"
 #include "TMath.h"
 #include "TGeoManager.h"
@@ -52,7 +52,7 @@ class PCBSupport
   TGeoMedium* mPCBMediumFR4;
   TGeoBBox* mSomeBox;
   TGeoTube* mSomeTube;
-  TGeoArb8* mSomeArb;
+  // TGeoArb8* mSomeArb;
 
   TGeoSubtraction* mSomeSubtraction;
   TGeoUnion* mSomeUnion;

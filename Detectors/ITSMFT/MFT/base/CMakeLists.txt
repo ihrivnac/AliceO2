@@ -31,7 +31,8 @@ o2_add_library(MFTBase
                        src/PowerSupplyUnit.cxx
                        src/Barrel.cxx
                        src/PatchPanel.cxx
-               PUBLIC_LINK_LIBRARIES O2::DetectorsBase
+               PUBLIC_LINK_LIBRARIES VecGeom::vecgeom
+                                     O2::DetectorsBase
                                      O2::ITSMFTBase
                                      O2::SimConfig               
                                      O2::ITSMFTSimulation

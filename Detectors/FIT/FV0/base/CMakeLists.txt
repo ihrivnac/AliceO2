@@ -11,7 +11,8 @@
 
 o2_add_library(FV0Base
                SOURCES src/Geometry.cxx
-               PUBLIC_LINK_LIBRARIES ROOT::Geom
+               PUBLIC_LINK_LIBRARIES VecGeom::vecgeom
+                                     ROOT::Geom
                                      FairRoot::Base
                                      O2::FrameworkLogger
                                      O2::DetectorsBase

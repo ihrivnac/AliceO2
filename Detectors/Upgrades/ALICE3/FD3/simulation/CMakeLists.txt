@@ -13,7 +13,8 @@ o2_add_library(FD3Simulation
                SOURCES src/Detector.cxx
                PUBLIC_LINK_LIBRARIES O2::FD3Base
 	                             O2::DataFormatsFD3
-                                     ROOT::Physics)
+                                     ROOT::Physics
+                                     VecGeom::vecgeom )
 
 o2_target_root_dictionary(FD3Simulation
                           HEADERS include/FD3Simulation/Detector.h)

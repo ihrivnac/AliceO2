@@ -25,7 +25,8 @@ o2_add_library(TRKSimulation
                                      O2::FT3Simulation
                                      O2::ITSMFTSimulation
                                      O2::DetectorsRaw
-                                     O2::SimulationDataFormat)
+                                     O2::SimulationDataFormat
+                                     VecGeom::vecgeom )
 
 o2_target_root_dictionary(TRKSimulation
                           HEADERS include/TRKSimulation/Hit.h

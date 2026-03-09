@@ -18,7 +18,8 @@ o2_add_library(HMPIDSimulation
                                      O2::DataFormatsHMP
                                      O2::DetectorsBase
                                      O2::DetectorsRaw
-                                     ROOT::Physics)
+                                     ROOT::Physics
+                                     VecGeom::vecgeom )
 
 o2_target_root_dictionary(HMPIDSimulation
                           HEADERS include/HMPIDSimulation/HmpidCoder2.h

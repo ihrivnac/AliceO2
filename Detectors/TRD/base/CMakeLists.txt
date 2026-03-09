@@ -21,7 +21,8 @@ o2_add_library(TRDBase
                        src/Calibrations.cxx
                        src/CalOnlineGainTables.cxx
                        src/TrackletTransformer.cxx
-               PUBLIC_LINK_LIBRARIES O2::GPUCommon
+               PUBLIC_LINK_LIBRARIES VecGeom::vecgeom
+                                     O2::GPUCommon
                                      O2::GPUUtils
                                      O2::DetectorsCommonDataFormats
                                      O2::Field

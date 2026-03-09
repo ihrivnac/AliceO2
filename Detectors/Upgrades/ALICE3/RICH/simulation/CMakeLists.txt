@@ -13,7 +13,8 @@ o2_add_library(RICHSimulation
                SOURCES src/RICHRing.cxx
                        src/Detector.cxx
                PUBLIC_LINK_LIBRARIES O2::RICHBase
-                                     O2::ITSMFTSimulation)
+                                     O2::ITSMFTSimulation
+                                     VecGeom::vecgeom )
 
 o2_target_root_dictionary(RICHSimulation
                           HEADERS include/RICHSimulation/Detector.h

@@ -17,7 +17,7 @@ o2_add_library(EMCALBase
         src/ClusterFactory.cxx
         src/TriggerMappingV2.cxx
         src/NonlinearityHandler.cxx
-        PUBLIC_LINK_LIBRARIES O2::CommonDataFormat O2::Headers Boost::serialization
+        PUBLIC_LINK_LIBRARIES VecGeom::vecgeom O2::CommonDataFormat O2::Headers Boost::serialization
         O2::MathUtils O2::DataFormatsEMCAL
         O2::SimulationDataFormat)
 

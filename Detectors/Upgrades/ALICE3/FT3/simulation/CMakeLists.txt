@@ -16,7 +16,8 @@ o2_add_library(FT3Simulation
                        src/Detector.cxx
                PUBLIC_LINK_LIBRARIES O2::FT3Base
                                      O2::ITSMFTSimulation
-                                     ROOT::Physics)
+                                     ROOT::Physics
+                                     VecGeom::vecgeom )
 
 o2_target_root_dictionary(FT3Simulation
                           HEADERS

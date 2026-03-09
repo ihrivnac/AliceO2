@@ -13,7 +13,8 @@ o2_add_library(ECalSimulation
                SOURCES src/Detector.cxx
                        src/Digitizer.cxx
                PUBLIC_LINK_LIBRARIES O2::ECalBase
-                                     O2::DataFormatsECal)
+                                     O2::DataFormatsECal
+                                     VecGeom::vecgeom )
 
 o2_target_root_dictionary(ECalSimulation
                           HEADERS include/ECalSimulation/Detector.h

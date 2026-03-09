@@ -21,7 +21,12 @@
 #include "Rtypes.h"                    // for Double_t, Int_t, Bool_t, etc
 #include "ITSSimulation/V11Geometry.h" // for V11Geometry
 
-class TGeoArb8;
+#if ! defined(ROOT_USE_VECGEOM_SOLIDS)
+  class TGeoArb8;
+#else
+  class TGeoVGArb8;
+  using TGeoArb8 = TGeoVGArb8;
+#endif
 
 class TGeoCombiTrans;
 

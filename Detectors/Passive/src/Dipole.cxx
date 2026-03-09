@@ -13,6 +13,7 @@
 #include <DetectorsBase/MaterialManager.h>
 #include <DetectorsPassive/Dipole.h>
 #include <TGeoArb8.h>
+#include <TGeoBBox.h>
 #include <TGeoCompositeShape.h>
 #include <TGeoCone.h>
 #include <TGeoManager.h>

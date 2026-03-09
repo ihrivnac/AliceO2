@@ -21,6 +21,7 @@
 #include <TGeoCone.h>
 #include <TGeoManager.h>
 #include <TGeoMatrix.h>
+#include <TGeoBBox.h>
 #include <TGeoPcon.h>
 #include <TGeoPgon.h>
 #include <TGeoTube.h>

@@ -18,7 +18,8 @@ o2_add_library(FV0Simulation
                               O2::Headers
                               O2::FV0Base
                               O2::DataFormatsFV0
-                              ROOT::Physics)
+                              ROOT::Physics
+                              VecGeom::vecgeom )
 
 o2_target_root_dictionary(FV0Simulation
         HEADERS include/FV0Simulation/Detector.h

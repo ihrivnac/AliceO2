@@ -107,6 +107,9 @@ set_package_properties(ROOT PROPERTIES TYPE REQUIRED)
 
 find_package(VMC MODULE)
 
+find_package(VecGeom CONFIG)
+set_package_properties(VecGeom PROPERTIES TYPE REQUIRED)
+
 find_package(fmt)
 set_package_properties(fmt PROPERTIES TYPE REQUIRED)
 

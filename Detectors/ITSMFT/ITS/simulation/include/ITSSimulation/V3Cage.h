@@ -20,7 +20,7 @@
 #include "Rtypes.h"                    // for Double_t, Int_t, Bool_t, etc
 #include "ITSSimulation/V11Geometry.h" // for V11Geometry
 
-class TGeoXtru;
+// class TGeoXtru;
 
 class TGeoCombiTrans;
 

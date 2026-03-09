@@ -9,7 +9,8 @@
 # granted to it by virtue of its status as an Intergovernmental Organization
 # or submit itself to any jurisdiction.
 
-list(APPEND LinkLibraries O2::SimulationDataFormat
+list(APPEND LinkLibraries VecGeom::vecgeom
+                          O2::SimulationDataFormat
                           O2::ZDCBase
                           O2::DataFormatsZDC
                           O2::CCDB

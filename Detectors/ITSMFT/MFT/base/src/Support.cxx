@@ -17,6 +17,7 @@
 #include "MFTBase/Constants.h"
 #include "MFTBase/Support.h"
 #include "MFTBase/Geometry.h"
+#include "TGeoArb8.h"
 
 using namespace o2::mft;
 
@@ -54,7 +55,7 @@ ClassImp(o2::mft::Support)
 
   initParameters();
 }
-
+#include <iostream>
 //_____________________________________________________________________________
 TGeoVolumeAssembly* Support::create(Int_t half, Int_t disk)
 {
@@ -65,149 +66,154 @@ TGeoVolumeAssembly* Support::create(Int_t half, Int_t disk)
   TGeoTranslation* localTranslation;
   TGeoCompositeShape* localCS = nullptr;
 
-  //Info("Create",Form("Creating Support_H%d_D%d", half,disk),0,0);
-  mHalfDisk = new TGeoVolumeAssembly(Form("Support_H%d_D%d", half, disk));
-  auto* base = new TGeoTubeSeg(Form("Base_H%d_D%d", half, disk), 0, mSupRad[disk], mSupThickness / 2., mPhi0, mPhi1);
+  // TO DO
+  // !!! Temporarily excluded Support_H%d_D%d, causing fatal error in VecGeom
+  // !!! (to be investigated later)
 
-  // Adding fixationBoxes
-  localCS = serialBoolOperation(base, TGeoBBox(), mDiskFixBoxes[disk], TGeoUnion());
+  // //Info("Create",Form("Creating Support_H%d_D%d", half,disk),0,0);
+  // mHalfDisk = new TGeoVolumeAssembly(Form("Support_H%d_D%d", half, disk));
+  // auto* base = new TGeoTubeSeg(Form("Base_H%d_D%d", half, disk), 0, mSupRad[disk], mSupThickness / 2., mPhi0, mPhi1);
 
-  // Cutting boxes
-  //Info("Create",Form("Cutting Boxes Support_H%d_D%d", half,disk),0,0);
-  // Using template function to remove boxes
-  localCS = serialBoolOperation(localCS, TGeoBBox(), mDiskBoxCuts[disk], TGeoSubtraction());
+  // // Adding fixationBoxes
+  // localCS = serialBoolOperation(base, TGeoBBox(), mDiskFixBoxes[disk], TGeoUnion());
 
-  // Adding raisedBoxes
-  //Info("Create",Form("Adding raised boxes Support_H%d_D%d", half,disk),0,0);
-  localCS = serialBoolOperation(localCS, TGeoBBox(), mDiskRaisedBoxes[disk], TGeoUnion());
+  // // Cutting boxes
+  // //Info("Create",Form("Cutting Boxes Support_H%d_D%d", half,disk),0,0);
+  // // Using template function to remove boxes
+  // localCS = serialBoolOperation(localCS, TGeoBBox(), mDiskBoxCuts[disk], TGeoSubtraction());
 
-  // =================  Holes ==================
-  //TODO: Holes pointing the y axis
+  // // Adding raisedBoxes
+  // //Info("Create",Form("Adding raised boxes Support_H%d_D%d", half,disk),0,0);
+  // localCS = serialBoolOperation(localCS, TGeoBBox(), mDiskRaisedBoxes[disk], TGeoUnion());
 
-  // ======= Creating big holes =========
-  //Info("Create",Form("Cutting Voids Support_H%d_D%d", half,disk),0,0);
-  for (auto iVoid = 0; iVoid < mNumberOfVoids[disk]; iVoid++) {
-    TGeoArb8* localArb;
-    localArb = new TGeoArb8(Form("sc_void_%d_H%d_D%d", iVoid, half, disk), mSupThickness + 10. * mT_delta);
-    for (auto iVertex = 0; iVertex < 4; iVertex++) {
-      Double_t* vertex = &mVoidVert[disk][iVoid][iVertex][0];
-      double y;
-      y = ((disk == 3) || (disk == 4)) ? mOuterCut[disk] - vertex[1] : vertex[1];
-      localArb->SetVertex(iVertex, vertex[0], y);
-      localArb->SetVertex(iVertex + 4, vertex[0], y); //Vertexes 4..7 = 0..3
-    }
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localArb, nullptr, TGeoSubtraction()));
-  }
+  // // =================  Holes ==================
+  // //TODO: Holes pointing the y axis
 
-  // ==== M2 6mm deep holes)
-  //Info("Create",Form("Cutting M2 6 mm deep holes Support_H%d_D%d", half,disk),0,0);
-  localTube = new TGeoTube(Form("sc_tube1_a_H%d_D%d", half, disk), 0, mRad_M2, mHeight_M2 + 6. * mT_delta);
-  for (auto iHole = 0; iHole < mNumberOfM2Holes[disk]; iHole++) {
-    localTranslation = new TGeoTranslation(-mM2Holes[disk][iHole][0],
-                                           mOuterCut[disk] - mM2Holes[disk][iHole][1],
-                                           mRaisedBoxHeight + mSupThickness / 2. - mHeight_M2);
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
+  // // ======= Creating big holes =========
+  // //Info("Create",Form("Cutting Voids Support_H%d_D%d", half,disk),0,0);
+  // for (auto iVoid = 0; iVoid < mNumberOfVoids[disk]; iVoid++) {
+  //   TGeoArb8* localArb;
+  //   localArb = new TGeoArb8(Form("sc_void_%d_H%d_D%d", iVoid, half, disk), mSupThickness + 10. * mT_delta);
+  //   std::cout << "arb8: " << localArb->GetName() <<  std::endl;
+  //   for (auto iVertex = 0; iVertex < 4; iVertex++) {
+  //     Double_t* vertex = &mVoidVert[disk][iVoid][iVertex][0];
+  //     double y;
+  //     y = ((disk == 3) || (disk == 4)) ? mOuterCut[disk] - vertex[1] : vertex[1];
+  //     localArb->SetVertex(iVertex, vertex[0], y);
+  //     localArb->SetVertex(iVertex + 4, vertex[0], y); //Vertexes 4..7 = 0..3
+  //   }
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localArb, nullptr, TGeoSubtraction()));
+  // }
 
-    //For the backside
-    localTranslation = new TGeoTranslation(mM2Holes[disk][iHole][0],
-                                           mOuterCut[disk] - mM2Holes[disk][iHole][1],
-                                           -(mRaisedBoxHeight + mSupThickness / 2. - mHeight_M2));
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
-  }
+  // // ==== M2 6mm deep holes)
+  // //Info("Create",Form("Cutting M2 6 mm deep holes Support_H%d_D%d", half,disk),0,0);
+  // localTube = new TGeoTube(Form("sc_tube1_a_H%d_D%d", half, disk), 0, mRad_M2, mHeight_M2 + 6. * mT_delta);
+  // for (auto iHole = 0; iHole < mNumberOfM2Holes[disk]; iHole++) {
+  //   localTranslation = new TGeoTranslation(-mM2Holes[disk][iHole][0],
+  //                                          mOuterCut[disk] - mM2Holes[disk][iHole][1],
+  //                                          mRaisedBoxHeight + mSupThickness / 2. - mHeight_M2);
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
 
-  // ==== D2 H7 - 4 mm deep (on raisedBoxes)
-  //Info("Create",Form("Cutting D2 mm holes on raisedboxes Support_H%d_D%d", half,disk),0,0);
-  localTube = new TGeoTube(Form("sc_tube1_a_H%d_D%d", half, disk), 0, mRad_D2_h, mHeight_D2_h + 6. * mT_delta);
+  //   //For the backside
+  //   localTranslation = new TGeoTranslation(mM2Holes[disk][iHole][0],
+  //                                          mOuterCut[disk] - mM2Holes[disk][iHole][1],
+  //                                          -(mRaisedBoxHeight + mSupThickness / 2. - mHeight_M2));
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
+  // }
 
-  for (auto iHole = 0; iHole < mNumberOfD2_hHoles[disk]; iHole++) {
-    localTranslation = new TGeoTranslation(-mD2_hHoles[disk][iHole][0],
-                                           mOuterCut[disk] - mD2_hHoles[disk][iHole][1],
-                                           mRaisedBoxHeight + mSupThickness / 2. - mHeight_D2_h);
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
+  // // ==== D2 H7 - 4 mm deep (on raisedBoxes)
+  // //Info("Create",Form("Cutting D2 mm holes on raisedboxes Support_H%d_D%d", half,disk),0,0);
+  // localTube = new TGeoTube(Form("sc_tube1_a_H%d_D%d", half, disk), 0, mRad_D2_h, mHeight_D2_h + 6. * mT_delta);
 
-    //For the backside
-    localTranslation = new TGeoTranslation(mD2_hHoles[disk][iHole][0],
-                                           mOuterCut[disk] - mD2_hHoles[disk][iHole][1],
-                                           -(mRaisedBoxHeight + mSupThickness / 2. - mHeight_D2_h));
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
-  }
+  // for (auto iHole = 0; iHole < mNumberOfD2_hHoles[disk]; iHole++) {
+  //   localTranslation = new TGeoTranslation(-mD2_hHoles[disk][iHole][0],
+  //                                          mOuterCut[disk] - mD2_hHoles[disk][iHole][1],
+  //                                          mRaisedBoxHeight + mSupThickness / 2. - mHeight_D2_h);
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
 
-  // ==== D6.5 H7 (6.5 mm diameter holes)
-  //Info("Create",Form("Cutting 6.5 holes Support_H%d_D%d", half,disk),0,0);
-  localTube = new TGeoTube(Form("D65tube_H%d_D%d", half, disk), 0, mD65, mSupThickness / 2. + 20. * mT_delta);
-  for (auto iHole = 0; iHole < mTwoHoles; iHole++) {
-    localTranslation = new TGeoTranslation(-mD65Holes[disk][iHole][0],
-                                           mOuterCut[disk] - mD65Holes[disk][iHole][1],
-                                           0.);
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
-  }
+  //   //For the backside
+  //   localTranslation = new TGeoTranslation(mD2_hHoles[disk][iHole][0],
+  //                                          mOuterCut[disk] - mD2_hHoles[disk][iHole][1],
+  //                                          -(mRaisedBoxHeight + mSupThickness / 2. - mHeight_D2_h));
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
+  // }
 
-  // ==== D6 H7 (6 mm diameter holes)
-  //Info("Create",Form("Cutting 6 mm holes Support_H%d_D%d", half,disk),0,0);
-  localTube = new TGeoTube(Form("D6tube_H%d_D%d", half, disk), 0, mD6, mSupThickness / 2. + mT_delta);
-  for (auto iHole = 0; iHole < mTwoHoles; iHole++) {
-    localTranslation = new TGeoTranslation(-mD6Holes[disk][iHole][0],
-                                           mOuterCut[disk] - mD6Holes[disk][iHole][1],
-                                           0.);
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
-  }
+  // // ==== D6.5 H7 (6.5 mm diameter holes)
+  // //Info("Create",Form("Cutting 6.5 holes Support_H%d_D%d", half,disk),0,0);
+  // localTube = new TGeoTube(Form("D65tube_H%d_D%d", half, disk), 0, mD65, mSupThickness / 2. + 20. * mT_delta);
+  // for (auto iHole = 0; iHole < mTwoHoles; iHole++) {
+  //   localTranslation = new TGeoTranslation(-mD65Holes[disk][iHole][0],
+  //                                          mOuterCut[disk] - mD65Holes[disk][iHole][1],
+  //                                          0.);
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
+  // }
 
-  // ==== D8 H7 (8 mm diameter holes)
-  //Info("Create",Form("Cutting 8 mm holes Support_H%d_D%d", half,disk),0,0);
-  localTube = new TGeoTube(Form("D8tube_H%d_D%d", half, disk), 0, mD8, mSupThickness / 2. + mRaisedBoxHeight + 20 * mT_delta);
-  for (auto iHole = 0; iHole < mNumberOfD8_Holes[disk]; iHole++) {
-    localTranslation = new TGeoTranslation(-mD8Holes[disk][iHole][0],
-                                           mOuterCut[disk] - mD8Holes[disk][iHole][1],
-                                           0.);
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
-  }
+  // // ==== D6 H7 (6 mm diameter holes)
+  // //Info("Create",Form("Cutting 6 mm holes Support_H%d_D%d", half,disk),0,0);
+  // localTube = new TGeoTube(Form("D6tube_H%d_D%d", half, disk), 0, mD6, mSupThickness / 2. + mT_delta);
+  // for (auto iHole = 0; iHole < mTwoHoles; iHole++) {
+  //   localTranslation = new TGeoTranslation(-mD6Holes[disk][iHole][0],
+  //                                          mOuterCut[disk] - mD6Holes[disk][iHole][1],
+  //                                          0.);
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
+  // }
 
-  // ==== D3 H7 (3 mm diameter holes)
-  //Info("Create",Form("Cutting 3 mm holes Support_H%d_D%d", half,disk),0,0);
-  localTube = new TGeoTube(Form("D3tube_H%d_D%d", half, disk), 0, mD3, mSupThickness / 2. + mT_delta);
-  for (auto iHole = 0; iHole < mTwoHoles; iHole++) {
-    localTranslation = new TGeoTranslation(-mD3Holes[disk][iHole][0],
-                                           mOuterCut[disk] - mD3Holes[disk][iHole][1],
-                                           0.);
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
-  }
+  // // ==== D8 H7 (8 mm diameter holes)
+  // //Info("Create",Form("Cutting 8 mm holes Support_H%d_D%d", half,disk),0,0);
+  // localTube = new TGeoTube(Form("D8tube_H%d_D%d", half, disk), 0, mD8, mSupThickness / 2. + mRaisedBoxHeight + 20 * mT_delta);
+  // for (auto iHole = 0; iHole < mNumberOfD8_Holes[disk]; iHole++) {
+  //   localTranslation = new TGeoTranslation(-mD8Holes[disk][iHole][0],
+  //                                          mOuterCut[disk] - mD8Holes[disk][iHole][1],
+  //                                          0.);
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
+  // }
 
-  // ==== M3 H7 (?? mm diameter holes)
-  //Info("Create",Form("Cutting M3 H7 holes Support_H%d_D%d", half,disk),0,0);
-  localTube = new TGeoTube(Form("M3tube_H%d_D%d", half, disk), 0, mM3, mSupThickness / 2. + mT_delta);
-  for (auto iHole = 0; iHole < mNumberOfM3Holes[disk]; iHole++) {
-    localTranslation = new TGeoTranslation(-mM3Holes[disk][iHole][0],
-                                           mOuterCut[disk] - mM3Holes[disk][iHole][1],
-                                           0.);
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
-  }
+  // // ==== D3 H7 (3 mm diameter holes)
+  // //Info("Create",Form("Cutting 3 mm holes Support_H%d_D%d", half,disk),0,0);
+  // localTube = new TGeoTube(Form("D3tube_H%d_D%d", half, disk), 0, mD3, mSupThickness / 2. + mT_delta);
+  // for (auto iHole = 0; iHole < mTwoHoles; iHole++) {
+  //   localTranslation = new TGeoTranslation(-mD3Holes[disk][iHole][0],
+  //                                          mOuterCut[disk] - mD3Holes[disk][iHole][1],
+  //                                          0.);
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
+  // }
 
-  // ==== D4.5 H9
-  //Info("Create",Form("Cutting 4.5 mm holes Support_H%d_D%d", half,disk),0,0);
-  localTube = new TGeoTube(Form("D45tube_H%d_D%d", half, disk), 0, mD45, mSupThickness / 2. + mT_delta);
-  for (auto iHole = 0; iHole < mTwoHoles; iHole++) {
-    localTranslation = new TGeoTranslation(-mD45Holes[disk][iHole][0],
-                                           mOuterCut[disk] - mD45Holes[disk][iHole][1],
-                                           0.);
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
-  }
+  // // ==== M3 H7 (?? mm diameter holes)
+  // //Info("Create",Form("Cutting M3 H7 holes Support_H%d_D%d", half,disk),0,0);
+  // localTube = new TGeoTube(Form("M3tube_H%d_D%d", half, disk), 0, mM3, mSupThickness / 2. + mT_delta);
+  // for (auto iHole = 0; iHole < mNumberOfM3Holes[disk]; iHole++) {
+  //   localTranslation = new TGeoTranslation(-mM3Holes[disk][iHole][0],
+  //                                          mOuterCut[disk] - mM3Holes[disk][iHole][1],
+  //                                          0.);
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
+  // }
 
-  // ==== D2 H7 - 4 mm deep (on lower surface)
-  //Info("Create",Form("Cutting D2 holes Support_H%d_D%d", half,disk),0,0);
-  localTube = new TGeoTube(Form("D2tube_H%d_D%d", half, disk), 0, mD2, .4 / 2. + 6 * mT_delta);
-  for (auto iHole = 0; iHole < mTwoHoles; iHole++) {
-    localTranslation = new TGeoTranslation(-mD2Holes[disk][iHole][0],
-                                           mOuterCut[disk] - mD2Holes[disk][iHole][1],
-                                           mSupThickness / 2. - .4 / 2);
-    localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
-  }
+  // // ==== D4.5 H9
+  // //Info("Create",Form("Cutting 4.5 mm holes Support_H%d_D%d", half,disk),0,0);
+  // localTube = new TGeoTube(Form("D45tube_H%d_D%d", half, disk), 0, mD45, mSupThickness / 2. + mT_delta);
+  // for (auto iHole = 0; iHole < mTwoHoles; iHole++) {
+  //   localTranslation = new TGeoTranslation(-mD45Holes[disk][iHole][0],
+  //                                          mOuterCut[disk] - mD45Holes[disk][iHole][1],
+  //                                          0.);
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
+  // }
+
+  // // ==== D2 H7 - 4 mm deep (on lower surface)
+  // //Info("Create",Form("Cutting D2 holes Support_H%d_D%d", half,disk),0,0);
+  // localTube = new TGeoTube(Form("D2tube_H%d_D%d", half, disk), 0, mD2, .4 / 2. + 6 * mT_delta);
+  // for (auto iHole = 0; iHole < mTwoHoles; iHole++) {
+  //   localTranslation = new TGeoTranslation(-mD2Holes[disk][iHole][0],
+  //                                          mOuterCut[disk] - mD2Holes[disk][iHole][1],
+  //                                          mSupThickness / 2. - .4 / 2);
+  //   localCS = new TGeoCompositeShape(nullptr, compositeOperation(localCS, localTube, localTranslation, TGeoSubtraction()));
+  // }
 
   // ======= Prepare support volume and add to HalfDisk =========
 
-  auto* support_vol = new TGeoVolume(Form("Support_H%d_D%d", half, disk), localCS, mSupportMedium);
+  //auto* support_vol = new TGeoVolume(Form("Support_H%d_D%d", half, disk), localCS, mSupportMedium);
 
-  auto* rot = new TGeoRotation("rot", 0, 0, 180);
-  mHalfDisk->AddNode(support_vol, 0, rot);
+  // auto* rot = new TGeoRotation("rot", 0, 0, 180);
+  // mHalfDisk->AddNode(support_vol, 0, rot);
   return mHalfDisk;
 }
 

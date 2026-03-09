@@ -14,7 +14,7 @@ o2_add_library(ITSSimulation
                        src/Detector.cxx src/V3Services.cxx src/V3Cage.cxx
                        src/DescriptorInnerBarrelITS2.cxx src/ITSDataSimulator.cxx
                        src/ITSSimParam.cxx
-               PUBLIC_LINK_LIBRARIES O2::ITSBase O2::ITSMFTSimulation ROOT::Physics
+               PUBLIC_LINK_LIBRARIES VecGeom::vecgeom O2::ITSBase O2::ITSMFTSimulation ROOT::Physics
                                      $<$<BOOL:${ENABLE_UPGRADES}>:O2::ITS3Base> $<$<BOOL:${ENABLE_UPGRADES}>:O2::ITS3Simulation>)
 
 o2_target_root_dictionary(ITSSimulation

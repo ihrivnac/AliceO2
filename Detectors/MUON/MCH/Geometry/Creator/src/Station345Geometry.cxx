@@ -21,6 +21,7 @@
 #include <TGeoManager.h>
 #include <TGeoMedium.h>
 #include <TGeoShape.h>
+#include <TGeoBBox.h>
 #include <TGeoTube.h>
 #include <TGeoVolume.h>
 #include <TMath.h>

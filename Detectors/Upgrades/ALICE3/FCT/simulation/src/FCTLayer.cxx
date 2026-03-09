@@ -23,6 +23,7 @@
 #include <TGeoManager.h> // for TGeoManager, gGeoManager
 #include <TGeoMatrix.h>  // for TGeoCombiTrans, TGeoRotation, etc
 #include <TGeoMedium.h>
+#include <TGeoBBox.h>           // for TGeoBBox
 #include <TGeoTube.h>           // for TGeoTube, TGeoTubeSeg
 #include <TGeoVolume.h>         // for TGeoVolume, TGeoVolumeAssembly
 #include <TGeoCompositeShape.h> // for TGeoCompositeShape

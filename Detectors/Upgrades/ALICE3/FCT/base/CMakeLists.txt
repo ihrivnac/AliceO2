@@ -12,7 +12,7 @@
 o2_add_library(FCTBase
                SOURCES src/GeometryTGeo.cxx
                SOURCES src/FCTBaseParam.cxx
-               PUBLIC_LINK_LIBRARIES O2::DetectorsBase O2::ITSMFTBase)
+               PUBLIC_LINK_LIBRARIES VecGeom::vecgeom O2::DetectorsBase O2::ITSMFTBase)
 
 o2_target_root_dictionary(FCTBase
                           HEADERS include/FCTBase/GeometryTGeo.h

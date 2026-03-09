@@ -10,7 +10,7 @@
 # or submit itself to any jurisdiction.
 
 o2_add_library(O2TrivialMC
-               PUBLIC_LINK_LIBRARIES MC::VMC)
+               PUBLIC_LINK_LIBRARIES VecGeom::vecgeom MC::VMC)
 
 o2_target_root_dictionary(O2TrivialMC
                           HEADERS include/O2TrivialMC/O2TrivialMCEngine.h

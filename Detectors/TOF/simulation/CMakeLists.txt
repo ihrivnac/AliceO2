@@ -11,7 +11,7 @@
 
 o2_add_library(TOFSimulation
                SOURCES src/Detector.cxx src/Digitizer.cxx src/TOFSimParams.cxx
-               PUBLIC_LINK_LIBRARIES O2::DetectorsBase O2::TOFBase
+               PUBLIC_LINK_LIBRARIES VecGeom::vecgeom O2::DetectorsBase O2::TOFBase
                                      O2::SimulationDataFormat O2::DetectorsRaw
 				     O2::TOFCalibration)
 
