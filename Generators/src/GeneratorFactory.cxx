@@ -168,12 +168,13 @@ void GeneratorFactory::setPrimaryGenerator(o2::conf::SimConfig const& conf, Fair
     auto extGen = new o2::eventgen::GeneratorFromO2Kine(pars);
     extGen->SetStartEvent(conf.getStartEvent());
     primGen->AddGenerator(extGen);
-    if (pars.continueMode) {
-      auto o2PrimGen = dynamic_cast<o2::eventgen::PrimaryGenerator*>(primGen);
-      if (o2PrimGen) {
-        o2PrimGen->setApplyVertex(false);
-      }
-    }
+    primGenO2->setApplyVertex(false);
+    // if (pars.continueMode) {
+    //   auto o2PrimGen = dynamic_cast<o2::eventgen::PrimaryGenerator*>(primGen);
+    //   if (o2PrimGen) {
+    //     o2PrimGen->setApplyVertex(false);
+    //   }
+    // }
     LOG(info) << "using external O2 kinematics";
   } else if (genconfig.compare("evtpool") == 0) {
     // case of an "event-pool" which is a specialization of extkinO2

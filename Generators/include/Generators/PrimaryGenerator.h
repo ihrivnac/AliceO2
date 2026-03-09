@@ -120,6 +120,7 @@ class PrimaryGenerator : public FairPrimaryGenerator
   o2::dataformats::MCEventHeader* mEmbedEvent = nullptr;
 
   bool mApplyVertex = true;
+  // bool mApplyVertex = false;
   o2::conf::VertexMode mVertexMode = o2::conf::VertexMode::kDiamondParam; // !vertex mode
   std::unique_ptr<o2::dataformats::MeanVertexObject> mMeanVertex;
 

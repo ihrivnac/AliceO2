@@ -261,12 +261,14 @@ bool GeneratorFromO2Kine::importParticles()
     LOG(info) << "Rotating phi by " << dPhi;
   }
 
+  LOG(info) << "GeneratorFromO2Kine::importParticles: " << mEventCounter << ", " <<  mEventsAvailable;
   if (mEventCounter < mEventsAvailable) {
     int particlecounter = 0;
 
     std::vector<o2::MCTrack>* tracks = nullptr;
     mEventBranch->SetAddress(&tracks);
     mEventBranch->GetEntry(mEventCounter);
+    // LOG(info) << "treack vector size: " << tracks->size();
 
     if (mMCHeaderBranch) {
       o2::dataformats::MCEventHeader* mcheader = nullptr;
@@ -311,7 +313,7 @@ bool GeneratorFromO2Kine::importParticles()
         wanttracking &= t.getInhibited();
       }
 
-      LOG(debug) << "Putting primary " << pdg;
+      // LOG(info) << "Putting primary " << pdg;
 
       mParticles.push_back(TParticle(pdg, t.getStatusCode().fullEncoding, m1, m2, d1, d2, px, py, pz, e, vx, vy, vz, vt));
       mParticles.back().SetUniqueID((unsigned int)t.getProcess()); // we should propagate the process ID

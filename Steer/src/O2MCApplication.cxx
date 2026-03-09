@@ -66,6 +66,7 @@ void O2MCApplicationBase::Stepping()
   const auto tof = fMC->TrackTime();
   auto& params = o2::GlobalProcessCutSimParam::Instance();
   if (tof > params.TOFMAX) {
+    std::cout << "Stopping particle that reached TOFMAX" << std::endl;
     fMC->StopTrack();
     return;
   }
@@ -167,6 +168,8 @@ void O2MCApplicationBase::InitGeometry()
 
 bool O2MCApplicationBase::MisalignGeometry()
 {
+  LOG(info) << "MisalignGeometry disabled.";
+/*
   for (auto det : listDetectors) {
     if (dynamic_cast<o2::base::Detector*>(det)) {
       ((o2::base::Detector*)det)->addAlignableVolumes();
@@ -209,6 +212,7 @@ bool O2MCApplicationBase::MisalignGeometry()
     gGeoManager->SetUseParallelWorldNav(true);
   }
 
+*/
   // return original return value of misalignment procedure
   return true;
 }
