@@ -25,6 +25,11 @@ struct GeometryManagerParam : public o2::conf::ConfigurableParamHelper<GeometryM
 
   int printLevel = -1; // geometry level to print out (determined by the volume path)
 
+  // Controls for TGeoManager::OptimizeCompositeShapes().
+  bool optimizeCompositeShapes = true;
+  int compositeShapeMinimumLeaves = 6;
+  int multiDifferenceMinimumLeaves = 3;
+
   O2ParamDef(GeometryManagerParam, "GeometryManagerParam");
 };
 

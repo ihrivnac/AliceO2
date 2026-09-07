@@ -140,6 +140,18 @@ void O2MCApplicationBase::ConstructGeometry()
   gGeoManager->SetUniqueID(dmask.to_ulong());
   FairMCApplication::ConstructGeometry();
 
+  // apply composite shapes optimisation
+  const auto& geometryParams = o2::GeometryManagerParam::Instance();
+  if (geometryParams.optimizeCompositeShapes) {
+    const auto minimumLeaves = geometryParams.compositeShapeMinimumLeaves;
+    const auto minimumMultiDifferenceLeaves = geometryParams.multiDifferenceMinimumLeaves;
+    const auto result = gGeoManager->OptimizeCompositeShapes(kTRUE, minimumLeaves, minimumMultiDifferenceLeaves);
+    LOG(info) << "OptimizeCompositeShapes(" << minimumLeaves << ", " << minimumMultiDifferenceLeaves
+              << ") optimized " << result << " composite shapes";
+  } else {
+    LOG(info) << "Composite shape optimization disabled";
+  }
+
   std::ofstream voltomodulefile("MCStepLoggerVolMap.dat");
   // construct the volume name to module name mapping useful for StepAnalysis
   auto vollist = gGeoManager->GetListOfVolumes();
@@ -173,6 +185,8 @@ void O2MCApplicationBase::InitGeometry()
 
 bool O2MCApplicationBase::MisalignGeometry()
 {
+  LOG(info) << "MisalignGeometry disabled.";
+/*
   for (auto det : listDetectors) {
     if (dynamic_cast<o2::base::Detector*>(det)) {
       ((o2::base::Detector*)det)->addAlignableVolumes();
@@ -217,7 +231,7 @@ bool O2MCApplicationBase::MisalignGeometry()
 
   // performs possible optimizations (shape replacements on the runtime geometry)
   fixTGeoRuntimeShapes();
-
+*/
   // return original return value of misalignment procedure
   return true;
 }
